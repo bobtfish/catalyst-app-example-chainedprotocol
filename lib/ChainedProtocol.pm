@@ -1,7 +1,6 @@
 package ChainedProtocol;
-
-use strict;
-use warnings;
+use Moose;
+use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
 
@@ -13,7 +12,7 @@ use Catalyst::Runtime 5.80;
 # Static::Simple: will serve static files from the application's root
 #                 directory
 
-use parent qw/Catalyst/;
+extends 'Catalyst';
 use Catalyst qw/-Debug
                 ConfigLoader
                 Static::Simple/;
