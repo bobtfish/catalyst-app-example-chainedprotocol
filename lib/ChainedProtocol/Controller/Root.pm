@@ -33,6 +33,12 @@ sub index :Path :Args(0) {
     $c->response->body( $c->welcome_message );
 }
 
+=head2 default
+
+Renders a default 404 error page.
+
+=cut
+
 sub default :Path {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
@@ -58,4 +64,4 @@ it under the same terms as Perl itself.
 
 =cut
 
-__PACKAGE__->meta->make_immutable;
+__PACKAGE__->meta->make_immutable
