@@ -1,0 +1,17 @@
+---
+schema_class: MusicDB
+resultsets:
+    - Release
+    - Track
+fixture_sets:
+    basic:
+        Release:
+            -
+                - upc
+                - title
+            -
+                - 666
+                - Foo
+            -
+                - 777
+                - Bar

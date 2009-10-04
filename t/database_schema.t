@@ -2,8 +2,11 @@ use strict;
 use warnings;
 use Test::More;
 
-use DBICx::TestDatabase;
-my $schema = DBICx::TestDatabase->new('MusicDB');
-ok $schema;
+BEGIN { use_ok 'MusicDB'; }
+
+use Test::DBIx::Class;
+
+fixtures_ok 'basic'
+  => 'installed the basic fixtures from configuration files';
 
 done_testing;

@@ -24,7 +24,7 @@ requires 'DBIx::Class' => '0.08112';
 requires 'SQL::Translator' => '0.11002';
 requires 'namespace::autoclean';
 
-test_requires 'DBICx::TestDatabase';
+test_requires 'Test::DBIx::Class' => '0.09';
 
 catalyst;
 
