@@ -6,4 +6,5 @@ pm_to_blib
 Makefile.old
 MANIFEST
 MANIFEST.bak
+db.sqlite3
 

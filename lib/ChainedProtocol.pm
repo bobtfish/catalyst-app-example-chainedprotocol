@@ -43,8 +43,6 @@ ChainedProtocol - Catalyst based application
 
 =head1 DESCRIPTION
 
-[enter your description here]
-
 =head1 SEE ALSO
 
 L<ChainedProtocol::Controller::Root>, L<Catalyst>
