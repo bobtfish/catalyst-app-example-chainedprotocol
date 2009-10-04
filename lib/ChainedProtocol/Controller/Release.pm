@@ -13,11 +13,21 @@ sub release : Chained('root') PathPart('release') CaptureArgs(0) {
 
 sub item : Chained('release') PathPart('') Args(1) {
     my ($self, $c, $id) = @_;
-    my $item = $c->stash->{rs} = $c->stash->{rs}->find({ release_id => $id })->first;
+    my $item = $c->stash->{rs} = $c->stash->{rs}->search({ release_id => $id })->single;
     $c->detach('/error404') unless $item;
     $c->stash->{zoom} = { # FIXME - need deep selectors here..
         '.upc' => { -replace_content => $item->upc },
         '.title' => { -replace_content => $item->title },
+        '#tracks' => {
+            -repeat => {
+                data => [
+                    map { {
+                        '.sequence' => { -replace_content => $_->sequence },
+                        '.tracktitle' => { -replace_content => $_->title },
+                    } } $item->tracks
+                ],
+            },
+        },
     };
 }
 
