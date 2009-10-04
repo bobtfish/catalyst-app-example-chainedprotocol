@@ -25,12 +25,16 @@ sub list : Chained('release') PathPart('') Args(0) {
     my ($self, $c) = @_;
     my $rs = $c->stash->{rs};
     $c->stash->{zoom} = {
-        '.list' => [
-            map { {
-                '.upc' => { -replace_content => $_->upc },
-                '.title' => { -replace_content => $_->title },
-            } } $rs->all
-        ],
+        '#list' => {
+            -repeat => {
+                data => [
+                    map { {
+                        '.upc' => { -replace_content => $_->upc },
+                        '.title' => { -replace_content => $_->title },
+                    } } $rs->all
+                ],
+            },
+        },
     };
 }
 
