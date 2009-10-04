@@ -20,7 +20,13 @@ ChainedProtocol::Controller::Root - Root Controller for ChainedProtocol
 
 =head1 METHODS
 
+=head1 root
+
+Chain start point
+
 =cut
+
+sub root : Chained('/') PathPart('') CaptureArgs(0) {}
 
 =head2 index
 
@@ -38,6 +44,11 @@ Renders a default 404 error page.
 =cut
 
 sub default :Path {
+    my ( $self, $c ) = @_;
+    $c->detach('/error404');
+}
+
+sub error404 : Action {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
     $c->response->status(404);
